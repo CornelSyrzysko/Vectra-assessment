@@ -1,0 +1,33 @@
+/* You can add global styles to this file, and also import other style files */
+
+@font-face {
+  font-family: "Inter-Regular" ;
+  src: url('../assets/font/Inter-Regular.ttf');
+}
+
+* {
+  font-family: "Inter-Regular" ;
+}
+
+.body {
+  margin: 0px;
+  padding: 0px;
+}
+
+
+.flex{
+  display: flex;
+
+  &-column {
+    flex-flow: column nowrap;
+  }
+  &-justify_center {
+    justify-content: center;
+  }
+  &-align_center {
+    align-items: center;
+  }
+  &-stretch {
+    flex: 1 1 auto;
+  }
+}
