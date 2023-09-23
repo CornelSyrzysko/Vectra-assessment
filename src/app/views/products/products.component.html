@@ -1,16 +1,33 @@
 <section class="main-container">
 
-  <div class="topBar">
+  <div class="flex topBar">
+    <div class=" sideBar-width">
+      Products found: <b>{{ total }}</b>
+    </div>
+    <div class="flex flex-stretch flex-space_between">
+      <input placeholder="Search for items in this list"
+        class="searchInput">
 
+    </div>
   </div>
 
   <div class="flex">
-    <div class="sideBar">
-
-
+    <div class="sideBar sideBar-width">
+      <div (click)="expandCategories = !expandCategories"
+        class="flex flex-space_between flex-align_center catDropdown">
+        <p>Categories</p>
+        <img class="chevDown" src="../../../assets/chev-down.svg">
+      </div>
+      <div *ngIf="expandCategories">
+        <div *ngFor="let category of categories">
+          <input type="checkbox" [id]="'cat'+category.categoryId"
+            [name]="category.categoryName" [value]="category.categoryId">
+          <label [for]="'cat'+category.categoryId">{{ category.categoryName }}</label><br>
+        </div>
+      </div>
     </div>
-    <div class="flex products ">
-
+    <div class="flex flex-wrap products ">
+      <app-product *ngFor="let product of products" [product]="product"></app-product>
     </div>
   </div>
 </section>

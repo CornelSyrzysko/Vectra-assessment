@@ -1,0 +1,16 @@
+{
+  "data" : [
+    {
+      "categoryId": 0,
+      "categoryName": "Category A"
+    },
+    {
+      "categoryId": 0,
+      "categoryName": "Category B"
+    } ,
+    {
+      "categoryId": 0,
+      "categoryName": "Category C"
+    }
+  ]
+}

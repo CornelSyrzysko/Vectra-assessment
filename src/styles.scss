@@ -1,4 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
+@import "~@angular/cdk/overlay-prebuilt.css";
 
 @font-face {
   font-family: "Inter-Regular" ;
@@ -9,7 +10,7 @@
   font-family: "Inter-Regular" ;
 }
 
-.body {
+.body, p {
   margin: 0px;
   padding: 0px;
 }
@@ -17,6 +18,10 @@
 
 .flex{
   display: flex;
+
+  &-wrap {
+    flex-wrap: wrap;
+  }
 
   &-column {
     flex-flow: column nowrap;
@@ -29,5 +34,8 @@
   }
   &-stretch {
     flex: 1 1 auto;
+  }
+  &-space_between {
+    justify-content: space-between;
   }
 }

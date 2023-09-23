@@ -1,3 +1,37 @@
 .topBar {
-  border: 1px 0px solid lightgrey;
+  border-top: 1px solid #f2f3f4;
+  border-bottom: 1px solid #f2f3f4;
+  padding: 20px;
+}
+
+.sideBar {
+  display: block;
+
+
+}
+
+.sideBar-width {
+  width: 20%;
+}
+
+.catDropdown {
+  padding: 10px 20px;
+  background-color: #f1f2f3;
+  cursor: pointer;
+}
+
+.searchInput {
+  border-radius: 5px;
+  border: 1px solid #f2f3f4;
+}
+
+.chevDown {
+  height: 10px;
+  width: 10px;
+}
+
+@media only screen and (max-width: 720px) {
+  .sideBar {
+    display: none;
+  }
 }

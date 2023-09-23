@@ -1,5 +1,7 @@
-<div class="" [style.border]="selectedProduct==product?.productId ? ">
-  <div class="flex-stretch" [(ngModel)]="7"></div>
+<div class="product" [ngClass]="{ 'selected': selectedProduct==product?.productId} ">
+  <div class="flex-stretch" >
+    <img [src]="product?.image">
+  </div>
   <div class="">
     <p>{{ product?.name }}</p>
     <p class="small">{{ product?.category?.categoryName }}</p>
