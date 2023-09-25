@@ -1,11 +1,25 @@
 <div class="product" [ngClass]="{ 'selected': selectedProduct==product?.productId} ">
-  <div class="flex-stretch" >
+  <div class="flex-stretch imgContainer" >
     <img [src]="product?.image">
+    <div class="dark_with_padding saleTag">
+      SALE
+    </div>
   </div>
-  <div class="">
+
+  <div class="details">
+
     <p>{{ product?.name }}</p>
     <p class="small">{{ product?.category?.categoryName }}</p>
-    <p class="bold">{{ product?.salePrice??product?.price }}</p>
-    <p class="small strike">{{ product?.price }}</p>
+
+    <div class="flex-stretch flex flex-column flex-justify_center price">
+      <p class="bold"><b>{{ product?.price | currency}}</b></p>
+      <p><s class="small" *ngIf="product?.oldPrice">{{ product?.oldPrice | currency}}</s></p>
+
+    </div>
+
+    <button class="dark_with_padding flex flex-justify_center flex-align_center viewBtn">
+      <span>VIEW</span>
+      <img  src="../../../assets/icons/right_arrow.svg">
+    </button>
   </div>
 </div>

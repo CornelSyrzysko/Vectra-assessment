@@ -2,12 +2,12 @@
 @import "~@angular/cdk/overlay-prebuilt.css";
 
 @font-face {
-  font-family: "Inter-Regular" ;
-  src: url('../assets/font/Inter-Regular.ttf');
+  font-family: "Raleway-Regular" ;
+  src: url('assets/font/Raleway-Regular.ttf');
 }
 
 * {
-  font-family: "Inter-Regular" ;
+  font-family: "Raleway-Regular" ;
 }
 
 .body, p {
@@ -37,5 +37,8 @@
   }
   &-space_between {
     justify-content: space-between;
+  }
+  &-space_evenly {
+    justify-content: space-evenly;
   }
 }

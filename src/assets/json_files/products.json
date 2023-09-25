@@ -3,11 +3,11 @@
     {
       "productId": 0,
       "name": "Product",
-      "price": 32.99,
-      "salePrice": 30.99,
+      "price": 30.99,
+      "oldPrice": 32.99,
       "category": {
         "categoryId": 0,
-        "categoryName": "Category "
+        "categoryName": "Category A"
       },
       "image": "https://picsum.photos/id/200/200/300"
     },
@@ -15,22 +15,21 @@
     {
       "productId": 1,
       "name": "Product 1",
-      "price": 32.99,
-      "salePrice": 30.99,
+      "price": 42.99,
       "category": {
         "categoryId": 1,
-        "categoryName": "Food"
+        "categoryName": "Category B"
       },
       "image": "https://picsum.photos/id/201/200/300"
     },
     {
       "productId": 2,
       "name": "Product 2",
-      "price": 32.99,
-      "salePrice": 30.99,
+      "price": 332.99,
+      "oldPrice": 352.99,
       "category": {
         "categoryId": 1,
-        "categoryName": "Food"
+        "categoryName": "Category B"
       },
       "image": "https://picsum.photos/id/202/200/300"
     },
@@ -38,120 +37,118 @@
       "productId": 3,
       "name": "Product 3",
       "price": 32.99,
-      "salePrice": 30.99,
+      "oldPrice": 40.99,
       "category": {
         "categoryId": 1,
-        "categoryName": "Food"
+        "categoryName": "Category B"
       },
       "image": "https://picsum.photos/id/203/200/300"
     },
     {
       "productId": 4,
       "name": "Product 4",
-      "price": 32.99,
-      "salePrice": 30.99,
+      "price": 39.99,
       "category": {
-        "categoryId": 1,
-        "categoryName": "Food"
+        "categoryId": 0,
+        "categoryName": "Category A"
       },
       "image": "https://picsum.photos/id/204/200/300"
     },
     {
       "productId": 5,
       "name": "Product 5",
-      "price": 32.99,
-      "salePrice": 30.99,
+      "price": 34.99,
+      "oldPrice": 36.99,
       "category": {
-        "categoryId": 1,
-        "categoryName": "Food"
+        "categoryId": 2,
+        "categoryName": "Category C"
       },
       "image": "https://picsum.photos/id/215/200/300"
     },
     {
       "productId": 6,
       "name": "Product 6",
-      "price": 32.99,
-      "salePrice": 30.99,
+      "price": 49.99,
+      "oldPrice": 60.99,
       "category": {
-        "categoryId": 1,
-        "categoryName": "Food"
+        "categoryId": 2,
+        "categoryName": "Category C"
       },
       "image": "https://picsum.photos/id/206/200/300"
     },
     {
       "productId": 7,
       "name": "Product 7",
-      "price": 32.99,
-      "salePrice": 30.99,
+      "price": 12.99,
       "category": {
-        "categoryId": 1,
-        "categoryName": "Food"
+        "categoryId": 2,
+        "categoryName": "Category C"
       },
       "image": "https://picsum.photos/id/217/200/300"
     },
     {
       "productId": 8,
       "name": "Product 8",
-      "price": 32.99,
-      "salePrice": 30.99,
+      "price": 2.99,
+      "oldPrice": 5.99,
       "category": {
-        "categoryId": 1,
-        "categoryName": "Food"
+        "categoryId": 0,
+        "categoryName": "Category A"
       },
       "image": "https://picsum.photos/id/208/200/300"
     },
     {
       "productId": 9,
       "name": "Product 9",
-      "price": 32.99,
-      "salePrice": 30.99,
+      "price": 86.99,
+      "oldPrice": 90.99,
       "category": {
-        "categoryId": 1,
-        "categoryName": "Food"
+        "categoryId": 0,
+        "categoryName": "Category A"
       },
       "image": "https://picsum.photos/id/209/200/300"
     },
     {
       "productId": 10,
       "name": "Product 10",
-      "price": 32.99,
-      "salePrice": 30.99,
+      "price": 35.99,
+      "oldPrice": 43.99,
       "category": {
         "categoryId": 1,
-        "categoryName": "Food"
+        "categoryName": "Category B"
       },
       "image": "https://picsum.photos/id/210/200/300"
     },
     {
       "productId": 11,
       "name": "Product 11",
-      "price": 32.99,
-      "salePrice": 30.99,
+      "price": 902.99,
+      "oldPrice": 912.99,
       "category": {
         "categoryId": 1,
-        "categoryName": "Food"
+        "categoryName": "Category B"
       },
       "image": "https://picsum.photos/id/211/200/300"
     },
     {
       "productId": 12,
       "name": "Product 12",
-      "price": 32.99,
-      "salePrice": 30.99,
+      "price": 312.99,
+      "oldPrice": 320.99,
       "category": {
-        "categoryId": 1,
-        "categoryName": "Food"
+        "categoryId": 0,
+        "categoryName": "Category A"
       },
       "image": "https://picsum.photos/id/212/200/300"
     },
     {
       "productId": 13,
       "name": "Product 13",
-      "price": 32.99,
-      "salePrice": 30.99,
+      "price": 87.99,
+      "oldPrice": 90.99,
       "category": {
-        "categoryId": 1,
-        "categoryName": "Food"
+        "categoryId": 2,
+        "categoryName": "Category C"
       },
       "image": "https://picsum.photos/id/213/200/300"
     }

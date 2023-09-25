@@ -5,11 +5,11 @@
       "categoryName": "Category A"
     },
     {
-      "categoryId": 0,
+      "categoryId": 1,
       "categoryName": "Category B"
     } ,
     {
-      "categoryId": 0,
+      "categoryId": 2,
       "categoryName": "Category C"
     }
   ]

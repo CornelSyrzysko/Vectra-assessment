@@ -1,3 +1,4 @@
+import { getLocaleCurrencyCode } from '@angular/common';
 import { Component, Input, Output } from '@angular/core';
 import { Category } from 'src/app/models/category';
 import { Product } from 'src/app/models/product';
@@ -13,6 +14,7 @@ export class ProductComponent {
   @Input() product?: Product;
   @Input() viewCallback? : Function;
 
-
+  ngOnInit() {
+  }
 
 }

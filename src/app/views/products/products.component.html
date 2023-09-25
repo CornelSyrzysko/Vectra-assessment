@@ -1,33 +1,56 @@
 <section class="main-container">
 
-  <div class="flex topBar">
+  <div class="flex flex-align_center topBar ">
     <div class=" sideBar-width">
       Products found: <b>{{ total }}</b>
     </div>
-    <div class="flex flex-stretch flex-space_between">
-      <input placeholder="Search for items in this list"
-        class="searchInput">
+    <div class="flex flex-stretch flex-space_between ">
+      <div class="flex search">
+        <input  placeholder="Search for items in this list"
+          class="searchInput" [(ngModel)]="search" (input)="onInput($event)">
+        <img src="../../../assets/icons/search.svg" alt="search-icon">
+      </div>
 
+      <div class="flex flex-justify_center flex-align_center sort" [ngClass]="{'sortHide': !expandSort}">
+        <label>Sort By:</label>
+        <div class="flex flex flex-space_evenly flex-align_center sortDropdown" (click)="expandSort= !expandSort;">
+          <b>{{sortSelected?.name}}</b>
+          <img class="chevDown" src="../../../assets/icons/chev-down.svg">
+        </div>
+
+        <ul class="flex flex-column" >
+          <ng-container *ngFor="let option of sortOptions">
+            <li *ngIf="option != sortSelected" (click)="sortProducts(option)">{{option.name}}</li>
+          </ng-container>
+        </ul>
+      </div>
     </div>
   </div>
 
   <div class="flex">
-    <div class="sideBar sideBar-width">
+    <div class="sideBar sideBar-width" [ngClass]="{'catHide': !expandCategories}">
       <div (click)="expandCategories = !expandCategories"
         class="flex flex-space_between flex-align_center catDropdown">
         <p>Categories</p>
-        <img class="chevDown" src="../../../assets/chev-down.svg">
+        <img class="chevDown" src="../../../assets/icons/chev-down.svg">
       </div>
-      <div *ngIf="expandCategories">
-        <div *ngFor="let category of categories">
-          <input type="checkbox" [id]="'cat'+category.categoryId"
-            [name]="category.categoryName" [value]="category.categoryId">
+      <div class="catList"  >
+        <div class="flex flex-align_center" *ngFor="let category of categories">
+          <input type="checkbox" [id]="'cat'+category.categoryId" (change)="selectCategory(category.categoryId)"
+            [name]="category.categoryName" [value]="category.categoryId" [checked]="selectedCategories.includes(category.categoryId)">
           <label [for]="'cat'+category.categoryId">{{ category.categoryName }}</label><br>
+          <span class="flex-stretch" >{{category.numberOfProducts}}</span>
         </div>
       </div>
     </div>
-    <div class="flex flex-wrap products ">
-      <app-product *ngFor="let product of products" [product]="product"></app-product>
+    <div class="flex flex-column">
+      <div class=" flex-stretch flex flex-wrap products ">
+        <app-product *ngFor="let product of products"
+          (click)="selectedProduct = product?.productId"
+          [product]="product" [selectedProduct]="selectedProduct"></app-product>
+      </div>
+      <a *ngIf="showMorePossible" (click)="showMore()"><b><u>SHOW MORE</u></b></a>
     </div>
+
   </div>
 </section>
