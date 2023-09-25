@@ -9,6 +9,8 @@ import { ProductComponent } from './components/product/product.component';
 import { LoaderComponent } from './components/loader/loader.component';
 import { HttpClientModule } from '@angular/common/http';
 import { OverlayModule } from '@angular/cdk/overlay';
+import { FormsModule } from '@angular/forms';
+
 
 
 @NgModule({
@@ -23,7 +25,8 @@ import { OverlayModule } from '@angular/cdk/overlay';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    OverlayModule
+    OverlayModule,
+    FormsModule
   ],
   providers: [OverlayModule],
   bootstrap: [AppComponent]
