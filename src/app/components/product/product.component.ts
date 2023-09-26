@@ -10,7 +10,14 @@ import { Product } from 'src/app/models/product';
 })
 export class ProductComponent {
 
-  @Input() selectedProduct?: number;
+  // Custom components can make developing a lot easier when you can reuse a component over
+  // and over. A lot of designs have the same general look across the board so singling out
+  // where components are being repeated can simplify a UI.
+  // Example: most buttons often look so much similar that it might be easier to create a component
+  // and just use data binding and event binding to make it look and act the way you want. Same for
+  // many other components
+
+
   @Input() product?: Product;
   @Input() viewCallback? : Function;
 

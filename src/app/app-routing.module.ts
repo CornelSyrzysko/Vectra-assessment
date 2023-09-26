@@ -4,10 +4,10 @@ import { LandingComponent } from './views/landing/landing.component';
 import { ProductsComponent } from './views/products/products.component';
 
 const routes: Routes = [
-  { path: "", redirectTo: "/products", pathMatch: 'full' },
+  { path: "", redirectTo: "/landing", pathMatch: 'full' },
   { path: "landing", component: LandingComponent },
   { path: "products", component: ProductsComponent },
-  { path: '**', redirectTo: "/dashboard", pathMatch: 'full' },
+  { path: '**', redirectTo: "/landing", pathMatch: 'full' },
 ];
 
 @NgModule({

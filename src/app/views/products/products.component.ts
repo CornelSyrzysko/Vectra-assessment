@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Subject, Subscription, debounceTime, distinctUntilChanged } from 'rxjs';
+import { Observable, Subject, Subscription, debounceTime, distinctUntilChanged, fromEvent } from 'rxjs';
 import { LoaderService } from 'src/app/components/loader/loader.service';
 import { Category } from 'src/app/models/category';
 import { Product } from 'src/app/models/product';
@@ -14,8 +14,10 @@ import { LocalService } from 'src/app/services/local.service';
 })
 export class ProductsComponent {
 
+  resizeObservable?: Observable<Event>;
+
+  mobileView : boolean = false;
   products: Product[] = [];
-  selectedProduct? : number = -1;
 
   categories: Category[] = [];
   expandCategories: boolean = true;
@@ -53,16 +55,30 @@ export class ProductsComponent {
   expandSort: boolean = false;
   showMorePossible: boolean = true;
 
+  subscriptions: Subscription[] =[];
+
   constructor(
     private dataService: DataService,
     private loader: LoaderService,
     private local : LocalService
-  ) {}
+  ) {
+    this.mobileView = window.screen.width < 768 ;
+  }
 
   ngOnInit(){
-    this.trigger.subscribe(currentValue => {
-      this.searchProducts(currentValue);
-    })
+
+
+    this.resizeObservable = fromEvent(window, 'resize');
+    this.subscriptions.push(this.resizeObservable.subscribe(event => {
+      this.mobileView = window.screen.width < 768 ;
+    }));
+
+    this.subscriptions.push(
+      this.trigger.subscribe(currentValue => {
+        this.searchProducts(currentValue);
+      })
+    );
+
     this.loader.showLoader();
     this.recollectData();
 
@@ -92,45 +108,46 @@ export class ProductsComponent {
       this.selectedCategories = stringValue.split(',').map(Number);
     }
 
-
-
   }
 
   getCategories() {
-    this.dataService.getProductCategories().subscribe({
-      next: (res) => {
-        this.categories = res.data;
-        this.loader.hideLoader();
-      },
-      error: (error) => {
-        this.loader.hideLoader();
-      }
-    });
+    this.subscriptions.push(
+      this.dataService.getProductCategories().subscribe({
+        next: (res) => {
+          this.categories = res.data;
+          this.loader.hideLoader();
+        },
+        error: (error) => {
+          this.loader.hideLoader();
+        }
+      })
+    );
+
   }
 
   getProducts() {
     this.loader.showLoader();
-    console.log('sortOption', this.sortSelected)
-    this.dataService.getProducts(this.offset, this.search.toLowerCase(),
+    this.subscriptions.push(
+      this.dataService.getProducts(this.offset, this.search.toLowerCase(),
       this.selectedCategories.length>0?this.selectedCategories :undefined,
-     this.sortSelected?.value ).subscribe({
-      next: (res) => {
-        this.products = res;
-        this.total = this.dataService.products.length;
-        console.log('sd', this.dataService.products);
-        this.categories.forEach((cat, index) => {
-          this.categories[index].numberOfProducts = this.dataService.products.filter((product)=> {
-            return product.category.categoryId == cat.categoryId;
-          }).length;
-        });
-        this.showMorePossible = (this.offset*8)<this.total;
-        this.loader.hideLoader();
-      },
-      error: (error) => {
-        console.error(error.toString());
-        this.loader.hideLoader();
-      }
-    });
+      this.sortSelected?.value ).subscribe({
+        next: (res) => {
+          this.products = res;
+          this.total = this.dataService.products.length;
+          this.categories.forEach((cat, index) => {
+            this.categories[index].numberOfProducts = this.dataService.products.filter((product)=> {
+              return product.category.categoryId == cat.categoryId;
+            }).length;
+          });
+          this.showMorePossible = (this.offset*8)<this.total;
+          this.loader.hideLoader();
+        },
+        error: (error) => {
+          console.error(error.toString());
+          this.loader.hideLoader();
+        }
+      })
+    );
   }
 
   searchProducts(searchValue: string) {
@@ -153,7 +170,6 @@ export class ProductsComponent {
     }
     this.local.saveData('categoryIds', this.selectedCategories.toString());
     this.getProducts();
-    console.log(this.selectedCategories);
   }
 
   sortProducts(option:SortObjedt ) {
@@ -162,7 +178,6 @@ export class ProductsComponent {
     this.sortSelected = option;
     this.expandSort = false;
     this.getProducts();
-
   }
 
   showMore() {
@@ -171,7 +186,10 @@ export class ProductsComponent {
     this.getProducts();
   }
 
-
+  // unsubscribe all subscriptions to prevent memory leaks
+  ngOnDestroy() {
+    this.subscriptions.forEach(sub => sub.unsubscribe());
+  }
 }
 
 interface SortObjedt{

@@ -1,4 +1,4 @@
-/* You can add global styles to this file, and also import other style files */
+
 @import "~@angular/cdk/overlay-prebuilt.css";
 
 @font-face {
@@ -10,11 +10,15 @@
   font-family: "Raleway-Regular" ;
 }
 
-.body, p {
+.body, * {
   margin: 0px;
   padding: 0px;
 }
 
+/* Depending on the size of the project, I'd sometimes opt to move global styles into another
+    stylesheet and import. Same for a variables sheet, to contain all the colors. This helps a
+    lot when it comes to whitelabling.
+*/
 
 .flex{
   display: flex;

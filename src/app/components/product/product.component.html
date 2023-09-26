@@ -1,4 +1,4 @@
-<div class="product" [ngClass]="{ 'selected': selectedProduct==product?.productId} ">
+<div class="product" [ngClass]="{ 'onSale': product?.oldPrice} ">
   <div class="flex-stretch imgContainer" >
     <img [src]="product?.image">
     <div class="dark_with_padding saleTag">
